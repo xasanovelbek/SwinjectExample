@@ -19,9 +19,6 @@ class FavouritesVC: BaseViewController {
         return view
     }()
     
-    
-    
-    
     private lazy var mainCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.configureImageLayout(self.view.frame.width, 16.0)
@@ -29,10 +26,7 @@ class FavouritesVC: BaseViewController {
         
         let collectionView = UICollectionView(frame: .zero,
                                               collectionViewLayout: layout)
-        
         collectionView.register(PictureCell.self, forCellWithReuseIdentifier: PictureCell.TAG)
-        
-        
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -50,17 +44,12 @@ class FavouritesVC: BaseViewController {
     }
     
     var favouritesViewModel: FavouritesViewModel?
-    
-    
     var currentPage = 0
-    
     var cancellables = Set<AnyCancellable>()
 
     
     override func setupViews() {
         self.title = "Favourite pictures"
-        
-        
         self.view.addSubview(mainContainer)
         self.mainContainer.addSubview(mainCollectionView)
         self.view.layoutIfNeeded()
@@ -109,9 +98,6 @@ class FavouritesVC: BaseViewController {
     override func loadDatas() {
         favouritesViewModel?.loadFavourites()
     }
-    
-    
-    
 }
 
 extension FavouritesVC: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
@@ -125,12 +111,6 @@ extension FavouritesVC: UICollectionViewDelegateFlowLayout, UICollectionViewData
         return cell
     }
     
-    
-
-    
-
-    
-    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let vc = PictureDatasVC()
         vc.pictureModel = self.pictures[indexPath.row]
@@ -141,7 +121,6 @@ extension FavouritesVC: UICollectionViewDelegateFlowLayout, UICollectionViewData
         currentPage += 1
         loadDatas()
     }
-    
 }
 
 
