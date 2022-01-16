@@ -179,8 +179,7 @@ extension PicturesVC: UICollectionViewDelegateFlowLayout, UICollectionViewDataSo
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.cellForItem(at: indexPath)?.pulse { [weak self] in
-            let vc = PictureDatasVC()
-            vc.pictureModel = self?.pictures[indexPath.row]
+            guard let vc = Assembler.sharedAssembler.resolver.resolve(PictureDatasVC.self, argument: self?.pictures[indexPath.row]) else { return }
             self?.navigationController?.pushViewController(vc, animated: true)
         }
     }
