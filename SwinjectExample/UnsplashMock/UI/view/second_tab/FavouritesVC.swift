@@ -112,9 +112,10 @@ extension FavouritesVC: UICollectionViewDelegateFlowLayout, UICollectionViewData
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let vc = PictureDatasVC()
-        vc.pictureModel = self.pictures[indexPath.row]
-        self.navigationController?.pushViewController(vc, animated: true)
+        collectionView.cellForItem(at: indexPath)?.pulse { [weak self] in
+            guard let vc = Assembler.sharedAssembler.resolver.resolve(PictureDatasVC.self, argument: self?.pictures[indexPath.row]) else { return }
+            self?.navigationController?.pushViewController(vc, animated: true)
+        }
     }
     
     @objc func clicked() {
