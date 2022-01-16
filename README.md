@@ -27,3 +27,12 @@ I made extension from Assebmler and using singleton pattern created all dependen
             return assembler
         }()
     }
+
+
+For resolving viewcontroller from container you have to call like this:
+
+             guard let vc = Assembler.sharedAssembler.resolver.resolve(PictureDatasVC.self, argument: self?.pictures[indexPath.row]) else { return }
+             self?.navigationController?.pushViewController(vc, animated: true)
+             
+             
+             
