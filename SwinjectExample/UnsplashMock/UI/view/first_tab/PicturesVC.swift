@@ -18,7 +18,6 @@ class PicturesVC: BaseViewController, UITextFieldDelegate {
         return view
     }()
     
-    
     private lazy var searchTextField: UITextField = {
         let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
@@ -40,17 +39,13 @@ class PicturesVC: BaseViewController, UITextFieldDelegate {
         
         let collectionView = UICollectionView(frame: .zero,
                                               collectionViewLayout: layout)
-        
         collectionView.register(PictureCell.self, forCellWithReuseIdentifier: PictureCell.TAG)
-        
         collectionView.register(CollectionFooter.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: CollectionFooter.TAG)
-        
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.keyboardDismissMode = .onDrag
         collectionView.backgroundColor = .clear
-        
         return collectionView
     }()
     
@@ -63,13 +58,8 @@ class PicturesVC: BaseViewController, UITextFieldDelegate {
     }
     
     var picturesViewModel: PicturesViewModel?
-    
-    
     var currentPage = 1
-    
-    
     var searchLastPage = 1
-    
     var cancellables = Set<AnyCancellable>()
     
 
@@ -100,8 +90,6 @@ class PicturesVC: BaseViewController, UITextFieldDelegate {
             }
             .store(in: &cancellables)
         
-        
-        
         picturesViewModel?
             .$error
             .receive(on: DispatchQueue.main)
@@ -112,8 +100,6 @@ class PicturesVC: BaseViewController, UITextFieldDelegate {
                 self.showError(error ?? "")
             }
             .store(in: &cancellables)
-        
-        
         
         picturesViewModel?
             .$pictures
@@ -133,8 +119,6 @@ class PicturesVC: BaseViewController, UITextFieldDelegate {
                 self.searchLastPage = searchResultModel?.total_pages ?? 1
             }
             .store(in: &cancellables)
-        
-        
     }
     
     
