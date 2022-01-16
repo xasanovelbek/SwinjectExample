@@ -40,7 +40,7 @@ class NetworkManager:  NetworkManagerProtocol {
             urlRequest.setValue(value, forHTTPHeaderField: key)
         }
         
-        print(urlRequest)
+
         currentTask = urlSession.dataTask(with: urlRequest) { data, response, error in
             if let error = error {
                 baseResponse.error = error.localizedDescription
