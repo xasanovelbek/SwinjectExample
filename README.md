@@ -8,6 +8,8 @@ I download images from URL by using "Kingfisher" pod.
 
 I made extension from Assebmler and using singleton pattern created all dependencies. Such as View, ViewModel, Repository, Manager dependencies.
 
+
+
 extension Assembler {
     static let sharedAssembler: Assembler = {
         let assembler = Assembler(
