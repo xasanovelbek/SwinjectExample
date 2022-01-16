@@ -10,17 +10,17 @@ I made extension from Assebmler and using singleton pattern created all dependen
 
 
 
-extension Assembler {
-    static let sharedAssembler: Assembler = {
-        let assembler = Assembler(
-            [
-                ViewAssembly(),
-                ViewModelAssembly(),
-                RepositoryAssembly(),
-                ManagersAssembly()
-                
-            ],
-            container: Container())
-        return assembler
-    }()
-}
+    extension Assembler {
+        static let sharedAssembler: Assembler = {
+            let assembler = Assembler(
+                [
+                    ViewAssembly(),
+                    ViewModelAssembly(),
+                    RepositoryAssembly(),
+                    ManagersAssembly()
+
+                ],
+                container: Container())
+            return assembler
+        }()
+    }
