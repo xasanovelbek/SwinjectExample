@@ -10,9 +10,15 @@ import Swinject
 class ViewAssembly: Assembly {
     func assemble(container: Container) {
         
+        
+        container.register(PictureDatasVC.self) { (r, data: PictureModel) in
+            let vc = PictureDatasVC()
+            vc.pictureModel = data
+            return vc
+        }
+        
         container.register(PicturesVC.self) { r in
             let vc = PicturesVC()
-            
             vc.picturesViewModel = r.resolve(PicturesViewModel.self)
             return vc
         }
