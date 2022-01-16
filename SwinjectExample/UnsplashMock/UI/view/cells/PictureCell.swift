@@ -97,7 +97,6 @@ class PictureCell: UICollectionViewCell {
  
     
     func configure(with model: PictureModel) {
-        print(model)
         contentImage.loadImage(with: model.urls?.regular)
         nameLabel.text = "\(model.likes ?? 0)"
     }
