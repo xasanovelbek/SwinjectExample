@@ -6,9 +6,7 @@ For networking process I decided to use simple "URLSession" API.
 I download images from URL by using "Kingfisher" pod.
 
 
-import Foundation
-import Swinject
-import SwinjectStoryboard
+I made extension from Assebmler and using singleton pattern created all dependencies. Such as View, ViewModel, Repository, Manager dependencies.
 
 extension Assembler {
     static let sharedAssembler: Assembler = {
