@@ -15,16 +15,12 @@ enum Headers {
     case simpleHeader
 }
 
-
 enum RequestType: String {
     case post = "POST"
     case get = "GET"
 }
 
-
-
 extension Endpoint {
-    
     private var basePath: String {
         "https://api.unsplash.com"
     }
@@ -38,7 +34,6 @@ extension Endpoint {
         }
     }
     
-    
     var requestType: RequestType {
         switch self {
         case .loadPictures:
@@ -47,8 +42,6 @@ extension Endpoint {
             return .get
         }
     }
-
-    
 }
 
 
@@ -59,9 +52,6 @@ extension Headers {
             return simpleHeader
         }
     }
-    
-
-    
     
     private var simpleHeader: [String: String] {
         ["Authorization": "Client-ID \(client_id)" ]
